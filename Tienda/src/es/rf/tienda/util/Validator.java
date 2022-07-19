@@ -95,9 +95,7 @@ public class Validator {
 	 * 
 	 * **************************************************************************************/
 	public static boolean cumplePhoneNumber(String phoneNumber){
-		
-		
-		return false;/*phoneNumber!=null && phoneNumber.matches(PHONE_PATTERN);*/ 
+		return phoneNumber!=null && phoneNumber.matches(PHONE_PATTERN);
 	}
 
 	/* ***************************************************************************************
@@ -227,31 +225,29 @@ public class Validator {
 		return texto!=null && cumpleLongitudMin(texto, longitudMinima) && cumpleLongitudMax(texto, longitudMaxima);
 	}
 	/**
-	 * Valida una fecha calendar con m�nimo min
+	 * Valida una fecha calendar con mím�nimo min
 	 * @param fecha
 	 * @param min
 	 * @return
 	 */
 	
 	public static boolean valDateMin(Calendar fecha, Calendar min){
-		Calendar aux = min;
-		aux.add(Calendar.DAY_OF_YEAR, - 1);
-		if(fecha.after(aux))
+		min.add(Calendar.DAY_OF_YEAR, 0);
+		if(fecha.after(min))
 			return true;
 		else
 			return false;
 	}
 	
 	/**
-	 * Valida una fecha calendar con m�ximo max
+	 * Valida una fecha calendar con máximo max
 	 * @param fecha
 	 * @param max
 	 * @return
 	 */
 	public static boolean valDateMax(Calendar fecha, Calendar max){
-		Calendar aux = max;
-		aux.add(Calendar.DAY_OF_YEAR, 1);
-		if(fecha.after(aux))
+		max.add(Calendar.DAY_OF_YEAR, 0);
+		if(fecha.before(max))
 			return true;
 		else
 			return false;

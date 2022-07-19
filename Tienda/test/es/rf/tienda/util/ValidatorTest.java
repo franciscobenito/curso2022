@@ -59,9 +59,21 @@ class ValidatorTest {
 	final int RANGO_MAXIMO = 100;
 	final int RANGO_MINIMO = 1;
 	
+	//Fechas
+	public static Calendar DIA_ACTUAL;
+	public static Calendar DIA_ANTERIOR;
+	public static Calendar DIA_POSTERIOR;
+	
 	static {
 		Calendar aux = Calendar.getInstance();
 		aux.add(Calendar.DAY_OF_YEAR, -1);
+		DIA_ANTERIOR = aux;
+		
+		aux = Calendar.getInstance();
+		aux.add(Calendar.DAY_OF_YEAR, +1);
+		DIA_POSTERIOR = aux;
+		
+		DIA_ACTUAL = Calendar.getInstance();
 	}
 	
 	@Test
@@ -139,13 +151,29 @@ class ValidatorTest {
 	}*/
 
 	@Test
-	void testValDateMin() {
-		fail("Not yet implemented");
+	void testValDateMin() {	//TODO: poner bien las constantes -> AÑO, MES, DÍA
+		Calendar c1 = Calendar.getInstance();
+		c1.set(RANGO_MAXIMO, RANGO_MINIMO, RANGO_MAXIMO);
+		
+		Calendar c2 = Calendar.getInstance();
+		c2.set(RANGO_MAXIMO, RANGO_MINIMO, RANGO_MAXIMO);
+		
+		assertAll(
+				() -> assertTrue(Validator.valDateMin(c2, c1)),
+				() -> assertFalse(Validator.valDateMin(c1, c2)));
 	}
 
 	@Test
-	void testValDateMax() {
-		fail("Not yet implemented");
+	void testValDateMax() { //TODO: poner bien las constantes -> AÑO, MES, DÍA
+		Calendar c1 = Calendar.getInstance();
+		c1.set(RANGO_MAXIMO, RANGO_MINIMO, RANGO_MAXIMO);
+		
+		Calendar c2 = Calendar.getInstance();
+		c2.set(RANGO_MAXIMO, RANGO_MINIMO, RANGO_MAXIMO);
+		
+		assertAll(
+				() -> assertTrue(Validator.valDateMax(c1, c2)),
+				() -> assertFalse(Validator.valDateMax(c2, c1)));
 	}
 
 	@Test
