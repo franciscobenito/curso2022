@@ -1,0 +1,24 @@
+package es.rf.tienda.dominio;
+
+import java.util.Date;
+
+public class Pedido {
+
+	private int id_pedido;
+	private int id_usuario;
+	private int id_producto;
+	private int car_cantidad;
+	private double car_precio;
+	private String car_envio;
+	private String car_pago;
+	private int car_tarjeta;
+	private Date car_feCadud;
+	private int car_ccv;
+	private String car_nombre;
+	private char car_stat;
+	private Date car_feCambio;
+	
+	public Pedido() {
+		
+	}
+}

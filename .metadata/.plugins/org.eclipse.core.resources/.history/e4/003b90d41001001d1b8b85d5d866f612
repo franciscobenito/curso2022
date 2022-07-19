@@ -1,0 +1,39 @@
+package es.rf.tienda.dominio;
+
+import java.util.Date;
+
+public class Usuario {
+
+	private int id_usuario;
+	private String user_nombre;
+	private String user_email;
+	private String user_pass;
+	private int id_tipo;
+	private String user_dni;
+	private Date user_fecAlta;
+	private Date user_fecConfirmacion;
+	private String user_pago;
+	private String user_envio;
+	
+	
+	public Usuario(String user_nombre, String user_email, String user_pass) {
+		
+	}
+	
+	public String getNombre() {
+		return user_nombre;
+	}
+	
+	public void setNombre(String newNombre) {
+		user_nombre=newNombre;
+	}
+	
+	public String getEmail() {
+		return user_email;
+	}
+	
+	public void setEmail(String newEmail) {
+		user_email=newEmail;
+	}
+
+}

@@ -1,0 +1,72 @@
+package es.rf.tienda.vistas;
+
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.ParallelGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import es.rf.tienda.dominio.Categoria;
+
+public class VistaCategoria {
+
+	Categoria object;
+	JFrame frame;
+	JPanel panel;
+	JLabel idLabel;
+	JLabel nombreLabel;
+	JLabel descrLabel;
+	JTextField idText;
+	JTextField nombreText;
+	JTextField descripcionText;
+	JButton aceptar;
+	JButton cancelar;
+	
+	VistaCategoria(){
+		vista("Categorias");
+	}
+	
+	public void vista (String title) {
+		panel = new JPanel();
+		frame = new JFrame(title);
+		frame.getContentPane().setLayout(new BorderLayout());
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500,200);
+		frame.setLocationRelativeTo(null);
+		
+		idLabel = new JLabel("ID");
+		nombreLabel = new JLabel("Nombre");
+		descrLabel = new JLabel("Descripcion");
+		idText = new JTextField();
+		nombreText = new JTextField();
+		descripcionText = new JTextField();
+		aceptar = new JButton("Aceptar");
+		cancelar = new JButton("Cancelar");
+		
+		
+		GroupLayout layout = new GroupLayout(panel);
+		ParallelGroup g1 = layout.createParallelGroup().addComponent(idLabel).addComponent(nombreLabel).addComponent(descrLabel);
+		ParallelGroup g2 = layout.createParallelGroup().addComponent(idText).addComponent(nombreText).addComponent(descripcionText);
+		ParallelGroup g3 = layout.createParallelGroup().addComponent(aceptar).addComponent(cancelar);
+		
+		
+		layout.setHorizontalGroup(layout.createSequentialGroup().addGroup(g1).addGroup(g2).addGroup(g3));
+		panel.setLayout(layout);
+		/*panel.add(idLabel);
+		panel.add(nombreLabel);
+		panel.add(descrLabel);
+		panel.add(idText);
+		panel.add(nombreText);
+		panel.add(descripcionText);
+		panel.add(aceptar);
+		panel.add(cancelar);*/
+		
+		frame.setContentPane(panel);
+		frame.setVisible(true);
+		
+	}
+}

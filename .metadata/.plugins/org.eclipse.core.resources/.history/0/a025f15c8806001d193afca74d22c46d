@@ -1,0 +1,45 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
+
+class OracleJDBCTest {
+
+	private static Connection conn;
+	private static OracleJDBC ojdbc;
+	
+	public final static String CLAVE_1 = "@2";
+	public final static String TEXTO_1 = "Este es el texto para el pais";
+	public final static String REGION_1 = "1";
+	public static String INSERT_1;
+	public final static String SELECT_G = "SELECT * FROM COUNTRIES WHERE";
+	public final static String SELECT_I = "SELECT * FROM COUNTRIES";
+	
+	@BeforeClass
+	public static void inicio() throws SQLException, Exception{
+		ojdbc = OracleJDBC.getInstance();
+		
+		INSERT_1 = "INSERT INTO COUNTRIES VALUES('"+CLAVE_1+"','"+TEXTO_1+"',"+REGION_1+")";
+		
+		int filas = ojdbc.ejecutar("DELECTE COUNTRIES WHERE COUNTRY_ID LIKE '@_'");
+	}
+
+	@Test
+	void testEjecutar() {
+		ojdbc.closeConnection();
+	}
+
+	@Test
+	void testEjecutarQuery() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testConsigueClave() {
+		fail("Not yet implemented");
+	}
+
+}

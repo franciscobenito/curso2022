@@ -1,0 +1,14 @@
+import java.io.IOException;
+import java.net.Socket;
+import java.net.URL;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		Socket s = new Socket("", 80);
+		
+		String url = "https:\\www.google.es\\";
+		URL urlConnection = new URL(url.openConnection());
+	}
+}

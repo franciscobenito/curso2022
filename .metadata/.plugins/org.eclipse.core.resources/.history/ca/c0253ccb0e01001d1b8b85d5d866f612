@@ -1,0 +1,40 @@
+package es.rf.tienda.dominio;
+
+
+
+public class Usuario {
+
+	private String nombre;
+	private String email;
+	private String psswrd;
+	
+	public Usuario(String nombre, String email, String psswrd) {
+		this.nombre=nombre;
+		this.email=email;
+		this.psswrd=psswrd;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String newNombre) {
+		nombre=newNombre;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String newEmail) {
+		email=newEmail;
+	}
+	
+	public String getPsswrd() {
+		return psswrd;
+	}
+	
+	public void setPsswrd(String newPsswrd) {
+		psswrd=newPsswrd;
+	}	
+}

@@ -1,0 +1,31 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class OracleJDBCTest {
+
+	public final String TEXTO_1 = "Este es el texto para el pais";
+	public final String REGION_1 = "1";
+	public final String TEXTO = "Este es el texto para el pais";
+	
+	@Test
+	void testMain() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testEjecutar() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testEjecutarQuery() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testConsigueClave() {
+		fail("Not yet implemented");
+	}
+
+}
