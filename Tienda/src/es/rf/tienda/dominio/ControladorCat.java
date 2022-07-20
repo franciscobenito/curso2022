@@ -22,6 +22,7 @@ public class ControladorCat implements Controlador<Categoria>{
 			e.printStackTrace();
 			return null;
 		}
+		
 	}
 
 	@Override
