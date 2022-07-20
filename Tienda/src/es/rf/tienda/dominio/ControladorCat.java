@@ -27,7 +27,7 @@ public class ControladorCat implements Controlador<Categoria>{
 	@Override
 	public List<Categoria> leerTodos() {
 		return cDAO.leerTodos();
-	}
+	}//prueba 2 de commit en Eclipse
 
 	@Override
 	public List<Categoria> leerSQL(String sql) {
