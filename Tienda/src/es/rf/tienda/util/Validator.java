@@ -3,6 +3,7 @@ package es.rf.tienda.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.function.BooleanSupplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,9 +44,9 @@ public class Validator {
 	private final static String PHONE_PATTERN =  "[\\d ]{10,20}";
 	
 	/**
-	 * Orden de las letras con las cuales se comprobar� la validez del DNI
+	 * Orden de las letras con las cuales se comprobará la validez del DNI
 	 */
-	private final static String LETRA_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
+	//private final static String LETRA_DNI = "TRWAGMYFPDXBNJZSQVHLCKE";
 	
 	/**
 	 * Longitud que debe tener todo DNI pasado a la aplicaci�n.
@@ -56,11 +57,11 @@ public class Validator {
 	 * NOMBRE: isAlfanumeric                                                                 *
 	 * 
 	 * DESCRIPCI�N: 
-	 * 		Permite verificar que el texto pasado solo contiene caracters alfanum�ricos
+	 * 		Permite verificar que el texto pasado solo contiene caracters alfanuméricos
 	 * 
-	 * @param texto String a verificar que solo tenga car�cteres alfanum�ricos
+	 * @param texto String a verificar que solo tenga caracteres alfanuméricos
 	 * 
-	 * @return  true, si cumple solo contiene caracters alfanum�ricos. <br> 
+	 * @return  true, si cumple solo contiene caracters alfanuméricos. <br> 
 	 * 			false en caso contrario
 	 * FECHA: Enero 2016
 	 * 
@@ -82,11 +83,11 @@ public class Validator {
 	 * NOMBRE: cumplePhoneNumber                                                                 *
 	 * 
 	 * DESCRIPCI�N: 
-	 * 		El phone number debe tener un total de entre 10 y 20, contando d�gitos y espacios.
-	 * 		M�nimo aceptable son 10 d�gitos.
+	 * 		El phone number debe tener un total de entre 10 y 20, contando dígitos y espacios.
+	 * 		M�nimo aceptable son 10 dígitos.
 	 * 
-	 * @param phoneNumber String con el n�mero de telefono de entre 10 y 20 d�gitos. 
-	 * 		Puede tener espacios, pero siempre con 10 d�gitos como m�nimo.
+	 * @param phoneNumber String con el n�mero de telefono de entre 10 y 20 dígitos. 
+	 * 		Puede tener espacios, pero siempre con 10 dígitos como mínimo.
 	 * 
 	 * @return true, si cumple todas las condiciones
 	 *
@@ -95,7 +96,10 @@ public class Validator {
 	 * 
 	 * **************************************************************************************/
 	public static boolean cumplePhoneNumber(String phoneNumber){
-		return phoneNumber!=null && phoneNumber.matches(PHONE_PATTERN);
+		Pattern pat = Pattern.compile(PHONE_PATTERN);
+		Matcher mat = pat.matcher(phoneNumber);
+		
+		return phoneNumber!=null && mat.find();
 	}
 
 	/* ***************************************************************************************
@@ -284,4 +288,11 @@ public class Validator {
 		return password!=null && mat.matches();
 
 	}
+
+	public static boolean isCodigoProducto(String codigo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 }

@@ -92,25 +92,28 @@ public class VistaCategoria {
 				categorias = new JFrame("Lista de categorias");
 				categorias.getContentPane().setLayout(new BorderLayout());
 				categorias.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				categorias.setSize(300,150);
+				
 				categorias.setLocationRelativeTo(null);
 				
 				JPanel p = new JPanel();
 				p.setLayout(new BorderLayout());
 				
-				JList<String> lista = new JList<String>();
+				String[] cat = {"001", "002", "003", "004", "005", "006", "007", "008", "009"};
+				JList lista = new JList(cat);
 				p.add(lista, BorderLayout.CENTER);
 				
-				JButton acep = new JButton ("Aceptar");
-				p.add(acep, BorderLayout.SOUTH);
+				JButton aceptar2 = new JButton ("Aceptar");
+				p.add(aceptar2, BorderLayout.SOUTH);
 				
-				categorias.setContentPane(panel);
+				categorias.setContentPane(p);
+				categorias.pack();
 				categorias.setVisible(true);
 			}
+			
 		});
 		aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: guardar y cerrar
+				//TODO: grabar y cerrar
 				
 				frame.setVisible(false);
 				frame.dispose();
@@ -121,6 +124,6 @@ public class VistaCategoria {
 				frame.setVisible(false);
 				frame.dispose();
 			}
-		});
+		});		
 	}
 }
