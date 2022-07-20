@@ -3,6 +3,7 @@ package es.rf.tienda.dominio;
 import java.util.List;
 import java.util.Map;
 
+import es.rf.tienda.exception.DAOException;
 import es.rf.tienda.interfaces.daos.ICategoria;
 
 public class ControladorCat implements Controlador<Categoria>{
@@ -10,12 +11,17 @@ public class ControladorCat implements Controlador<Categoria>{
 	private ICategoria cDAO;
 	
 	public ControladorCat() {
-		cDAO = new CategoriaDAO();
+		//TODO cDAO = new CategoriaDAO();
 	}
 	
 	@Override
 	public Categoria leer(Categoria obj) {
-		return cDAO.leerRegistro(obj);
+		try {
+			return cDAO.leerRegistro(obj);
+		} catch (DAOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
