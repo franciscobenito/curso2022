@@ -1,23 +1,21 @@
 package es.rf.tienda.vistas;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.TableColumn;
+import javax.swing.table.DefaultTableModel;
 
 public class VistaCategoria{
 
@@ -32,30 +30,27 @@ public class VistaCategoria{
 	private JButton ver;
 	private JButton salir;
 	private JTable tablaCat;
+	private DefaultTableModel modelo;
+	private JScrollPane scroll;
 	
 	public VistaCategoria(){
 		vista("Categorias");
 	}
 
 	public void vista (String title) {
-		
 		//Ventana principal
 		frame = new JFrame(title);
 		frame.getContentPane().setLayout(new BorderLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800,300);
+		frame.setSize(400,300);
 		frame.setLocationRelativeTo(null);
 		
 		//Paneles
-		//Principal
 		panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout(0,0));
-		//De etiquetas
 		panelLabel = new JPanel();
-		//De tabla
 		panelTabla = new JPanel();
-		//De botones
 		panelButton = new JPanel();
 		panelButton.setLayout(new FlowLayout());
 				
@@ -65,16 +60,20 @@ public class VistaCategoria{
 		modificar = new JButton("Modificar");
 		ver = new JButton("Ver");
 		salir = new JButton("Salir");
-		tablaCat = new JTable();
-		tablaCat.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		tablaCat.setOpaque(false);
-		tablaCat.addColumn(new TableColumn());
-		//scrollPaneTabla = new JScrollPane();
-		//scrollPaneTabla.setViewportView(tablaCat);
-
+		//Tabla
+		modelo = new DefaultTableModel();
+		tablaCat = new JTable(modelo);
+		scroll = new JScrollPane(tablaCat);
+		Object[] tituloCat ={"ID", "Nombre", "Descripcion"}; //TODO no se pone el titulo en la tabla
+        modelo.setColumnIdentifiers(tituloCat); 
+		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); //TODO no aparece el scroll (ni horizontal ni vertical)
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scroll.setBounds(10, 55, 420, 125);
+		
+		//Añadimos los paneles al panel principal
 		panelLabel.add(catLabel);
 		panelTabla.add(tablaCat);
-		//panelTabla.add(scrollPaneTabla, BorderLayout.WEST);
+		panelTabla.add(scroll);
 		panelButton.add(nuevo);
 		panelButton.add(modificar);
 		panelButton.add(ver);
@@ -88,30 +87,10 @@ public class VistaCategoria{
 		frame.setVisible(true);
 		
 		//Acción botones
-		
 		nuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				crearNuevaCat();
-				/*System.out.println("Añadir ID de la categoría");
-				Scanner sc = new Scanner(System.in);
-				
-				JLabel idCat = new JLabel(sc.next());
-				tablaCat.add(idCat);
-				
-
-				System.out.println("Añadir nombre de la categoría");
-				JLabel nombreCat = new JLabel(sc.next());
-				tablaCat.add(nombreCat);				
-
-				System.out.println("Añadir descripción de la categoría");
-				JLabel descCat = new JLabel(sc.next());
-				tablaCat.add(descCat);
-				
-				frame.setVisible(false);
-				frame.dispose();*/
 			}
-
-			
 		});
 		salir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -120,8 +99,9 @@ public class VistaCategoria{
 			}
 		});		
 	}
-	
+
 	private void crearNuevaCat() {
+		//Nueva ventana para crear categorías
 		JFrame frame2 = new JFrame("Añadir categoría");
 		frame2.getContentPane().setLayout(new BorderLayout());
 		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,16 +109,12 @@ public class VistaCategoria{
 		frame2.setLocationRelativeTo(null);
 		
 		//Paneles
-		//Principal
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new BorderLayout());
-		//De etiquetas
 		JPanel panelLabel2 = new JPanel();
 		panelLabel2.setLayout(new GridLayout(3,1));
-		//De texto
 		JPanel panelText2 = new JPanel();
 		panelText2.setLayout(new GridLayout(3,1));
-		//De botones
 		JPanel panelButton2 = new JPanel();
 		panelButton2.setLayout(new FlowLayout());
 		
@@ -163,7 +139,30 @@ public class VistaCategoria{
 		panelText2.add(nombreText);
 		panelText2.add(descripcionText);
 		panelButton2.add(aceptar);
-		panelButton2.add(cancelar);
+		panelButton2.add(cancelar);	
+		
+		//Acción de botones
+		aceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String [] objecto = new String[3];
+			    objecto[0] = idText.getText();
+			    objecto[1] = nombreText.getText(); 
+			    objecto[2] = descripcionText.getText();
+			    
+			    modelo.addRow(objecto);
+			    modelo.addTableModelListener(tablaCat);
+			    System.out.println("Categoria añadida");
+			    
+			    frame2.setVisible(false);
+				frame2.dispose();
+			}
+		});	
+		cancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame2.setVisible(false);
+				frame2.dispose();
+			}
+		});	
 		
 		frame2.setContentPane(panel2);
 		frame2.setVisible(true);

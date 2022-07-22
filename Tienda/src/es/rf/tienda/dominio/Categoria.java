@@ -12,7 +12,7 @@ import es.rf.tienda.util.Validator;
  * @version		13 de abr. de 2016
  *
  */
-public class Categoria {
+public class Categoria extends Modelo{
 	
 	private static final int CAT_NOMBRE_LONG_MAX = 50;
 	private static final int CAT_NOMBRE_LONG_MIN = 5;
@@ -24,6 +24,7 @@ public class Categoria {
 	private Validator validator;
 	
 	public Categoria(){
+		super("Categoria", "id_categoria");
 		cat_descripcion=null;
 		validator=new Validator();
 	}
@@ -33,6 +34,34 @@ public class Categoria {
 		return !Validator.isVacio(cat_nombre) &&
 				id_categoria > 0;
 	}
+	
+	@Override
+	public String toString() {
+		return "Categoria [id_categoria=" + id_categoria + ", cat_nombre=" + cat_nombre + ", cat_descripcion="
+				+ cat_descripcion + "]";
+	}
+
+
+	@Override
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public void setId(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public String[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	/**
 	 * Getter para identificador de categoria
@@ -128,12 +157,4 @@ public class Categoria {
 		return true;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Categoria [id_categoria=" + id_categoria + ", cat_nombre=" + cat_nombre + ", cat_descripcion="
-				+ cat_descripcion + "]";
-	}
-	
-	
 }

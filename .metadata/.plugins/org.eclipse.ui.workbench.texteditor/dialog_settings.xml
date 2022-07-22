@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="DAY_OF_YEAR"/>
+		<item key="selection" value="listaPersonas"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="tablaPersonas"/>
+			<item value="select"/>
+			<item value="dni"/>
+			<item value="email"/>
+			<item value="CADENA30"/>
+			<item value="CADENA1"/>
+			<item value="&#x09;public final static String CADENA1 = &quot;a&quot;;"/>
+			<item value="cumpleph"/>
+			<item value="cumple"/>
 			<item value="DAY_OF_YEAR"/>
 			<item value="passw"/>
 			<item value="match"/>
@@ -16,13 +25,15 @@
 			<item value="contentEquals"/>
 		</list>
 		<list key="replacehistory">
+			<item value="listaCat"/>
+			<item value="tablaCat"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="1161"/>
 		<item key="DIALOG_Y_ORIGIN" value="124"/>
-		<item key="DIALOG_WIDTH" value="511"/>
-		<item key="DIALOG_HEIGHT" value="523"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 </section>
